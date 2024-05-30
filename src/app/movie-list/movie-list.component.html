@@ -1,6 +1,6 @@
 <app-search-bar (search)="searchMovies($event)"></app-search-bar>
-<div id="movie-container" class="row">
-  <div class="col-12 col-sm-6 col-md-4" *ngFor="let movie of movies">
+<div id="movie-container" class="row mt-3">
+  <div class="col-12 col-sm-6 col-md-4 mb-3" *ngFor="let movie of movies">
     <div class="card clickable" (click)="openDetails(movie.id)">
       <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" class="card-img-top" [alt]="movie.title">
       <div class="card-body">
@@ -10,4 +10,6 @@
     </div>
   </div>
 </div>
-<app-pagination [totalPages]="totalPages" (pageChange)="loadMovies($event)"></app-pagination>
+<div *ngIf="isLoading" class="text-center">
+  <p>Loading...</p>
+</div>
