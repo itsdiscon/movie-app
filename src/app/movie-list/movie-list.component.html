@@ -1,16 +1,17 @@
 <app-search-bar (search)="searchMovies($event)"></app-search-bar>
-<div id="movie-container" class="row row-cols-1 row-cols-md-3 g-3 mt-3">
-  <div class="col" *ngFor="let movie of movies">
-    <div class="card h-100 clickable" (click)="openDetails(movie.id)">
-      <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" class="card-img-top" [alt]="movie.title">
-      <div class="card-body">
-        <h5 class="card-title">{{ movie.title }}</h5>
-        <p class="card-text">{{ movie.overview }}</p>
+<div id="movie-container" class="container mt-3">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+    <div class="col" *ngFor="let movie of movies">
+      <div class="card h-100 clickable" (click)="openDetails(movie.id)">
+        <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" class="card-img-top" [alt]="movie.title">
+        <div class="card-body">
+          <h5 class="card-title">{{ movie.title }}</h5>
+          <p class="card-text">{{ movie.overview }}</p>
+        </div>
       </div>
     </div>
   </div>
+  <div *ngIf="isLoading" class="text-center mt-3">
+    <p>Loading...</p>
+  </div>
 </div>
-<div *ngIf="isLoading" class="text-center">
-  <p>Loading...</p>
-</div>
-
